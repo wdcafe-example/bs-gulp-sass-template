@@ -1,0 +1,123 @@
+// 박스 꾸미기
+@mixin box($w: 200px, $h: 200px, $bdz: 1px){
+  width: $w;
+  height: $h;
+  border: $bdz solid #333;
+  margin-bottom: 30px;
+}
+
+// 클리어 믹스인
+@mixin clear{
+  &::after{
+    content: ''; 
+    display: block;
+    clear: both;
+  }
+}
+
+
+// 블록요소 정렬
+@mixin box-align($w, $h, $x, $y, $pos: 'XY'){
+  width: $w;
+  height: $h;     
+  position: absolute; left: $x; top: $y;
+
+  // Translate : 설정옵션 3가지 => XY, X, Y 
+  @if $pos == 'XY' {
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  } @else if $pos == 'X'{
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+  } @else if $pos == 'Y' {
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+  } 
+  
+}
+
+
+@mixin flex($isDirection:true, $isHorizontalAlign: 'start', $isVerticalAlign: 'start', $gap: 0){
+  display: flex;
+
+  // 1. 아이템 방향설정
+  @if $isDirection == true {
+    flex-direction: row;
+  } @else {
+    flex-direction: column;
+  }
+
+  // 2. 아이템 수평정렬
+  @if $isHorizontalAlign == 'start' {
+    justify-content: flex-start;
+  } @else if $isHorizontalAlign == 'center'{
+    justify-content: center;
+  } @else if $isHorizontalAlign == 'end' {
+    justify-content: flex-end;
+  } @else {
+    justify-content: flex-start;
+  }
+
+
+  // 3. 아이템 수직정렬
+  @if $isVerticalAlign == 'start' {
+    align-items: flex-start;
+  } @else if $isVerticalAlign == 'center'{
+    align-items: center;
+  } @else if $isVerticalAlign == 'end' {
+    align-items: flex-end;
+  } @else {
+    align-items: flex-start;
+  }
+
+
+  // 4. 아이템 여백설정
+  gap: $gap;
+
+}
+
+
+// 버튼꾸미기 믹스인
+@mixin btn($w, $h, $c, $fz, $ff, $bgc){
+  display: inline-block;
+  width: $w;
+  height: $h;
+  font: bold #{$fz}/#{$h} $ff;
+  text-align: center;
+  color: $c;
+  text-decoration: none;
+  background-color: $bgc;
+  border: 1px solid #000;
+}
+
+
+// 라운드 버튼 믹스인
+@mixin btn-radius($w, $h, $bg, $radius: true){
+  display: inline-block;
+  width: $w;
+  height: $h;
+  line-height: $h;
+  text-align: center;
+  background-color: $bg;
+  color: #000;
+  text-decoration: none;
+
+  // 버튼 라운드 처리
+  @if $radius{
+    border-radius: $h / 2;
+  } @else {
+    border-radius: 0;
+  }
+}
+
+
+// 폰트 설정
+@mixin font-set($fw, $fz, $h, $ff){
+  font: $fw #{$fz}/#{$h} $ff;
+}
