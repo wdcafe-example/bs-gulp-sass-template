@@ -84,6 +84,7 @@ function watchTask(){
       baseDir: './'
     },
     port: 3000,
+    // notify: false, // 브라우저 알림 비활성화
   });
 
   // task watch
@@ -91,6 +92,7 @@ function watchTask(){
   gulp.watch('./js-task/*.js', jsTask); // js-task 폴더의 JS 파일 변경 시 jsTask 실행
   gulp.watch('./html/*.html').on('change', browserSync.reload);
   gulp.watch('./js/*.js').on('change', browserSync.reload);
+  gulp.watch('./css/*.css').on('change', browserSync.reload);
 }
  
 
