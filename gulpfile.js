@@ -90,6 +90,7 @@ function watchTask(){
   gulp.watch('./scss/*.scss', scssTask); // scss 폴더의 SCSS 파일 변경 시 scssTask 실행
   gulp.watch('./js-task/*.js', jsTask); // js-task 폴더의 JS 파일 변경 시 jsTask 실행
   gulp.watch('./html/*.html').on('change', browserSync.reload);
+  gulp.watch('./js/*.js').on('change', browserSync.reload);
 }
  
 
