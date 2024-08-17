@@ -1,8 +1,10 @@
-// // Overrides
+// 패키지 호출
 @import "../node_modules/bootstrap/scss/bootstrap";
 @import "../node_modules/bootstrap-icons/font/bootstrap-icons.css";
 @import "../node_modules/@fortawesome/fontawesome-free/css/all.min.css";
 
+
+// 커스터마이징 시작
 h1{
   margin: 100px 0;
   color: #333;
